@@ -52,8 +52,8 @@ export WARNING="${RED}\e[5m"
 export UNDERLINE="\e[4m"
 
 # // Exporting URL Host
-export Server_URL="raw.githubusercontent.com/kenDevXD/test/main"
-export Server1_URL="raw.githubusercontent.com/kenDevXD/limit/main"
+export Server_URL="raw.githubusercontent.com/Zeastore/test/main"
+export Server1_URL="raw.githubusercontent.com/Zeastore/limit/main"
 export Server_Port="443"
 export Server_IP="underfined"
 export Script_Mode="Stable"
@@ -586,4 +586,4 @@ sleep 5
 clear
 rm -fr /root/key.pem >/dev/null 2>&1
 rm -fr /root/cert.pem >/dev/null 2>&1
-rm -fr /root/ssh-vpn.sh >/dev/null 2>&1 
+rm -fr /root/ssh-vpn.sh >/dev/null 2>&1�
