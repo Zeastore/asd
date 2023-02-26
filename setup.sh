@@ -63,10 +63,10 @@ echo ""
 read -p "Input Your License Key : " Input_License_Key
 
 # // Checking Input Blank
-if [ $Input_License_Key ==  "" ]; then
-    echo -e "${EROR} Please Input License Key !${NC}"
-    exit 1
-fi
+# if [ $Input_License_Key ==  "" ]; then
+#    echo -e "${EROR} Please Input License Key !${NC}"
+#    exit 1
+# fi
 
 # // Checking License Validate
 Key="$Input_License_Key"
