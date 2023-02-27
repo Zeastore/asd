@@ -63,7 +63,7 @@ ln -fs /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
 
 # // cek old script
 if [[ -r /etc/xray/domain ]]; then
-clear
+
 echo -e "${INFO} Having Script Detected !"
 echo -e "${INFO} If You Replacing Script, All Client Data On This VPS Will Be Cleanup !"
 read -p "Are You Sure Wanna Replace Script ? (Y/N) " josdong
@@ -138,47 +138,10 @@ mkdir -p /etc/xray
 mkdir -p /usr/local/etc/xray
 
 # // String / Request Data
-sub=$(</dev/urandom tr -dc a-z0-9 | head -c4)
-DOMAIN=vpnmurah.me
-SUB_DOMAIN=${sub}.zeaking.my.id
-CF_ID=mulahkual@gmail.com
-CF_KEY=565df838cbdf80722e12eb5b1d7186143b74e
-set -euo pipefail
-IP=$(curl -sS ifconfig.me);
-echo "Updating DNS for ${SUB_DOMAIN}..."
-ZONE=$(curl -sLX GET "https://api.cloudflare.com/client/v4/zones?name=${DOMAIN}&status=active" \
-     -H "X-Auth-Email: ${CF_ID}" \
-     -H "X-Auth-Key: ${CF_KEY}" \
-     -H "Content-Type: application/json" | jq -r .result[0].id)
+mkdir -p /var/lib/scrz-prem >/dev/null 2>&1
+echo "IP=" >> /var/lib/scrz-prem/ipvps.conf
+wget https://raw.githubusercontent.com/Zeastore/src/main/ssh/cf.sh && chmod +x cf.sh && ./cf.sh
 
-RECORD=$(curl -sLX GET "https://api.cloudflare.com/client/v4/zones/${ZONE}/dns_records?name=${SUB_DOMAIN}" \
-     -H "X-Auth-Email: ${CF_ID}" \
-     -H "X-Auth-Key: ${CF_KEY}" \
-     -H "Content-Type: application/json" | jq -r .result[0].id)
-
-if [[ "${#RECORD}" -le 10 ]]; then
-     RECORD=$(curl -sLX POST "https://api.cloudflare.com/client/v4/zones/${ZONE}/dns_records" \
-     -H "X-Auth-Email: ${CF_ID}" \
-     -H "X-Auth-Key: ${CF_KEY}" \
-     -H "Content-Type: application/json" \
-     --data '{"type":"A","name":"'${SUB_DOMAIN}'","content":"'${IP}'","ttl":120,"proxied":false}' | jq -r .result.id)
-fi
-
-RESULT=$(curl -sLX PUT "https://api.cloudflare.com/client/v4/zones/${ZONE}/dns_records/${RECORD}" \
-     -H "X-Auth-Email: ${CF_ID}" \
-     -H "X-Auth-Key: ${CF_KEY}" \
-     -H "Content-Type: application/json" \
-     --data '{"type":"A","name":"'${SUB_DOMAIN}'","content":"'${IP}'","ttl":120,"proxied":false}')
-     
-echo "Host : $SUB_DOMAIN"
-echo $SUB_DOMAIN > /root/domain
-echo "IP=$SUB_DOMAIN" > /var/lib/scrz-prem/ipvps.conf
-sleep 1
-yellow() { echo -e "\\033[33;1m${*}\\033[0m"; }
-yellow "Domain added.."
-sleep 3
-domain=$(cat /root/domain)
-cp -r /root/domain /etc/xray/domain
 
 # // Making Certificate
 clear
