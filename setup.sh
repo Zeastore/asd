@@ -119,20 +119,6 @@ clear
 clear && clear && clear
 clear;clear;clear
 
-# // Starting Setup Domain
-echo -e "${YELLOW}-----------------------------------------------------${NC}"
-echo -e "You Want to Use a Private Domain ?"
-echo -e "Or Want to Use Auto Domain ?"
-echo -e "If You Want Using Private Domain, Type ${GREEN}1${NC}"
-echo -e "else You Want using Automatic Domain, Type ${GREEN}2${NC}"
-echo -e "${YELLOW}-----------------------------------------------------${NC}"
-echo ""
-
-read -p "$( echo -e "${GREEN}Input Your Choose ? ${NC}(${YELLOW}1/2${NC})${NC} " )" choose_domain
-
-# // Validating Automatic / Private
-if [[ $choose_domain == "2" ]]; then # // Using Automatic Domain
-
 # // Folder Sistem Yang Tidak Boleh Di Hapus
 mkdir -p /usr/bin
 # // Remove File & Directory
@@ -211,80 +197,6 @@ chmod +x /root/.acme.sh/acme.sh
 # // Success
 echo -e "${OKEY} Your Domain : $domain"
 sleep 2
-
-# // ELif For Selection 1
-elif [[ $choose_domain == "1" ]]; then
-
-# // Clear
-clear
-clear && clear && clear
-clear;clear;clear
-
-echo -e "${YELLOW}-----------------------------------------------------${NC}"
-echo -e "Please Point Your Domain To IP VPS"
-echo -e "For Point NS Domain To Cloudflare"
-echo -e "Change NameServer On Domain To Cloudflare"
-echo -e "Then Add A Record With IP VPS"
-echo -e "${YELLOW}-----------------------------------------------------${NC}"
-echo ""
-echo ""
-
-# // Reading Your Input
-read -p "Input Your Domain : " domain
-if [[ $domain == "" ]]; then
-    clear
-    echo -e "${EROR} No Input Detected !"
-    exit 1
-fi
-
-# // Folder Sistem Yang Tidak Boleh Di Hapus
-mkdir -p /usr/bin
-# // Remove File & Directory
-rm -fr /usr/local/bin/xray
-rm -fr /usr/local/bin/stunnel
-rm -fr /usr/local/bin/stunnel5
-rm -fr /etc/nginx
-rm -fr /var/lib/scrz-prem/
-rm -fr /usr/bin/xray
-rm -fr /etc/xray
-rm -fr /usr/local/etc/xray
-# // Making Directory 
-mkdir -p /etc/nginx
-mkdir -p /var/lib/scrz-prem/
-mkdir -p /usr/bin/xray
-mkdir -p /etc/xray
-mkdir -p /usr/local/etc/xray
-
-# // Input Domain TO VPS
-echo "$domain" > /etc/${Auther}/domain.txt
-echo "IP=$domain" > /var/lib/scrz-prem/ipvps.conf
-echo "$domain" > /root/domain
-domain=$(cat /root/domain)
-cp -r /root/domain /etc/xray/domain
-
-# // Making Certificate
-clear
-echo -e "[ ${GREEN}INFO${NC} ] Starting renew cert... " 
-sleep 2
-echo -e "${OKEY} Starting Generating Certificate"
-rm -fr /root/.acme.sh
-mkdir -p /root/.acme.sh
-curl https://acme-install.netlify.app/acme.sh -o /root/.acme.sh/acme.sh
-chmod +x /root/.acme.sh/acme.sh
-/root/.acme.sh/acme.sh --upgrade
-/root/.acme.sh/acme.sh --upgrade --auto-upgrade
-/root/.acme.sh/acme.sh --set-default-ca --server letsencrypt
-/root/.acme.sh/acme.sh --issue -d $domain --standalone -k ec-256
-~/.acme.sh/acme.sh --installcert -d $domain --fullchainpath /etc/xray/xray.crt --keypath /etc/xray/xray.key --ecc
-# // Success
-echo -e "${OKEY} Your Domain : $domain"
-sleep 2
-
-# // Else Do
-else
-    echo -e "${EROR} Please Choose 1 & 2 Only !"
-    exit 1
-fi
 
 #install jembot
 echo -e "$white\033[0;34m┌─────────────────────────────────────────┐${NC}"
