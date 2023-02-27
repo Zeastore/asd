@@ -58,99 +58,8 @@ export VERSION="1.1"
 # // Exporint IP AddressInformation
 export IP=$( curl -s https://ipinfo.io/ip/ )
 
-# // License Validating
-echo ""
-read -p "Input Your License Key : " Input_License_Key
-
-# // Checking Input Blank
-# if [ $Input_License_Key ==  "" ]; then
-#    echo -e "${EROR} Please Input License Key !${NC}"
-#    exit 1
-# fi
-
-# // Checking License Validate
-Key="$Input_License_Key"
-
 # // Set Time To Jakarta / GMT +7
 ln -fs /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
-
-# // Algoritma Key
-algoritmakeys="1920192019209129403940293013912" 
-hashsuccess="$(echo -n "$Key" | sha256sum | cut -d ' ' -f 1)" 
-Sha256Successs="$(echo -n "$hashsuccess$algoritmakeys" | sha256sum | cut -d ' ' -f 1)" 
-License_Key=$Sha256Successs
-echo ""
-echo -e "${OKEY} Successfull Connected To Server"
-sleep 1
-
-# // Validate Result
-Getting_Data_On_Server=$( curl -s https://${Server_URL}/validated-registered-license-key.txt | grep $License_Key | cut -d ' ' -f 1 )
-if [[ "$Getting_Data_On_Server" == "$License_Key" ]]; then
-    mkdir -p /etc/${Auther}/
-    echo "$License_Key" > /etc/${Auther}/license.key
-    echo -e "${OKEY} License Validated !"
-    sleep 1
-else
-    echo -e "${EROR} Your License Key Not Valid !"
-    exit 1
-fi
-# // Checking Your VPS Blocked Or No
-if [[ $IP == "" ]]; then
-    echo -e "${EROR} Your IP Address Not Detected !"
-    exit 1
-else
-    # // Checking Data
-    export Check_Blacklist_Atau_Tidak=$( curl -s https://${Server_URL}/blacklist.txt | grep -w $License_Key | awk '{print $1}' | tr -d '\r' | tr -d '\r\n' | head -n1 )
-    if [[ $Check_Blacklist_Atau_Tidak == $IP ]]; then
-        echo -e "${EROR} 403 Forbidden ( Your VPS Has Been Blocked ) !"
-        exit 1
-    else
-        Skip='true'
-    fi
-fi
-# // cek limit
-export limit=$( curl -s https://${Server1_URL}/limit.txt | grep $License_Key | wc -l )
-export Install_Limited=$( curl -s https://${Server_URL}/validated-registered-license-key.txt | grep -w $License_Key | cut -d ' ' -f 2)
-if [[ $limit == $Install_Limited ]]; then
-        echo -e "${EROR} 403 Forbidden ( Your License Max Limit Install ) !"
-        exit 1
-    else
-        Skip='true'
-fi
-# // License Key Detail
-export Tanggal_Pembelian_License=`date +"%Y-%m-%d" -d "$dateFromServer"`
-export Nama_Issued_License=$( curl -s https://${Server_URL}/validated-registered-license-key.txt | grep -w $License_Key | cut -d ' ' -f 7| tr -d '\r' | tr -d '\r\n')
-export mekmek=$( curl -s https://${Server_URL}/validated-registered-license-key.txt | grep -w $License_Key | cut -d ' ' -f 3 | tr -d '\r' | tr -d '\r\n')
-export Masa_Laku_License_Berlaku_Sampai=`date -d "$mekmek days" +"%Y-%m-%d"`
-export Install_Limit=$( curl -s https://${Server_URL}/validated-registered-license-key.txt | grep -w $License_Key | cut -d ' ' -f 2 | tr -d '\r' | tr -d '\r\n')
-export Tipe_License=$( curl -s https://${Server_URL}/validated-registered-license-key.txt | grep -w $License_Key | cut -d ' ' -f 8 | tr -d '\r' | tr -d '\r\n')
-
-# // Ouputing Information
-echo -e "${OKEY} License Type / Edition ( ${GREEN}$Tipe_License Edition${NC} )" # > // Output Tipe License Dari Exporting
-echo -e "${OKEY} This License Issued to (${GREEN} $Nama_Issued_License ${NC})"
-echo -e "${OKEY} Subscription Started On (${GREEN} $Tanggal_Pembelian_License${NC} )"
-echo -e "${OKEY} Subscription Ended On ( ${GREEN}${Masa_Laku_License_Berlaku_Sampai}${NC} )"
-echo -e "${OKEY} Installation Limit ( ${GREEN}$Install_Limit VPS${NC} )"
-echo -e "${OKEY} Installation Usage ( ${GREEN}$limit VPS${NC} )"
-
-# // Exporting Expired Date
-export Tanggal_Sekarang=`date -d "0 days" +"%Y-%m-%d"`
-export Masa_Aktif_Dalam_Satuan_Detik=$(date -d "$Masa_Laku_License_Berlaku_Sampai" +%s)
-export Tanggal_Sekarang_Dalam_Satuan_Detik=$(date -d "$Tanggal_Sekarang" +%s)
-export Hasil_Pengurangan_Dari_Masa_Aktif_Dan_Hari_Ini_Dalam_Satuan_Detik=$(( (Masa_Aktif_Dalam_Satuan_Detik - Tanggal_Sekarang_Dalam_Satuan_Detik) / 86400 ))
-if [[ $Hasil_Pengurangan_Dari_Masa_Aktif_Dan_Hari_Ini_Dalam_Satuan_Detik -lt 0 ]]; then
-    echo -e "${EROR} Your License Expired On ( ${RED}$Masa_Laku_License_Berlaku_Sampai${NC} )"
-    exit 1
-else
-    echo -e "${OKEY} Your License Key = $(if [[ ${Hasil_Pengurangan_Dari_Masa_Aktif_Dan_Hari_Ini_Dalam_Satuan_Detik} -lt 5 ]]; then
-    echo -e "${RED}${Hasil_Pengurangan_Dari_Masa_Aktif_Dan_Hari_Ini_Dalam_Satuan_Detik}${NC} Days Left"; else
-    echo -e "${GREEN}${Hasil_Pengurangan_Dari_Masa_Aktif_Dan_Hari_Ini_Dalam_Satuan_Detik}${NC} Days Left"; fi )"
-fi
-
-# // Validate Successfull
-echo ""
-read -p "$( echo -e "Press ${CYAN}[ ${NC}${GREEN}Enter${NC} ${CYAN}]${NC} For Starting Installation") "
-echo ""
 
 # // cek old script
 if [[ -r /etc/xray/domain ]]; then
@@ -211,15 +120,6 @@ clear && clear && clear
 clear;clear;clear
 
 # // Starting Setup Domain
-echo -e "${GREEN}Indonesian Language${NC}"
-echo -e "${YELLOW}-----------------------------------------------------${NC}"
-echo -e "Anda Ingin Menggunakan Domain Pribadi ?"
-echo -e "Atau Ingin Menggunakan Domain Otomatis ?"
-echo -e "Jika Ingin Menggunakan Domain Pribadi, Ketik ${GREEN}1${NC}"
-echo -e "dan Jika Ingin menggunakan Domain Otomatis, Ketik ${GREEN}2${NC}"
-echo -e "${YELLOW}-----------------------------------------------------${NC}"
-echo ""
-echo -e "${GREEN}English Language${NC}"
 echo -e "${YELLOW}-----------------------------------------------------${NC}"
 echo -e "You Want to Use a Private Domain ?"
 echo -e "Or Want to Use Auto Domain ?"
@@ -254,9 +154,9 @@ mkdir -p /usr/local/etc/xray
 # // String / Request Data
 sub=$(</dev/urandom tr -dc a-z0-9 | head -c4)
 DOMAIN=vpnmurah.me
-SUB_DOMAIN=${sub}.vpnmurah.me
-CF_ID=paoandest@gmail.com
-CF_KEY=1d158d0efc4eef787222cefff0b6d20981462
+SUB_DOMAIN=${sub}.zeaking.my.id
+CF_ID=mulahkual@gmail.com
+CF_KEY=565df838cbdf80722e12eb5b1d7186143b74e
 set -euo pipefail
 IP=$(curl -sS ifconfig.me);
 echo "Updating DNS for ${SUB_DOMAIN}..."
@@ -320,14 +220,6 @@ clear
 clear && clear && clear
 clear;clear;clear
 
-echo -e "${GREEN}Indonesian Language${NC}"
-echo -e "${YELLOW}-----------------------------------------------------${NC}"
-echo -e "Silakan Pointing Domain Anda Ke IP VPS"
-echo -e "Untuk Caranya Arahkan NS Domain Ke Cloudflare"
-echo -e "Kemudian Tambahkan A Record Dengan IP VPS"
-echo -e "${YELLOW}-----------------------------------------------------${NC}"
-echo ""
-echo -e "${GREEN}Indonesian Language${NC}"
 echo -e "${YELLOW}-----------------------------------------------------${NC}"
 echo -e "Please Point Your Domain To IP VPS"
 echo -e "For Point NS Domain To Cloudflare"
@@ -555,7 +447,7 @@ echo "1.1" >> /home/.ver
 rm -fr /root/limit
 curl -sS ifconfig.me > /etc/myipvps
 echo " "
-echo "=====================-[ Kenn Hiroyuki Premium ]-===================="
+echo "=====================-[ ZEAKING TUNNELING ]-===================="
 echo ""
 echo "------------------------------------------------------------"
 echo ""
@@ -599,7 +491,7 @@ echo ""
 echo ""
 echo "------------------------------------------------------------"
 echo ""
-echo "===============-[ Script Created By Kenn Hiroyuki ]-==============="
+echo "===============-[ Script Mod By ZEAKING TUNNELING ]-==============="
 echo -e ""
 echo ""
 echo "" | tee -a log-install.txt
@@ -611,7 +503,7 @@ rm -fr /root/setup.sh
 rm -fr /root/domain
 history -c
 
-echo -ne "[ ${yell}WARNING${NC} ] Apakah Anda Ingin Reboot Sekarang ? (y/n)? "
+echo -ne "[ ${yell}WARNING${NC} ] Do You Need Reboot Now ? (y/n)? "
 read answer
 if [ "$answer" == "${answer#[Yy]}" ] ;then
 exit 0
