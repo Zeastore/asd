@@ -363,6 +363,19 @@ rm -f /usr/local/bin/stunnel3
 rm -f /usr/local/bin/stunnel4
 #rm -f /usr/local/bin/stunnel5
 
+# banner /etc/issue.net
+sleep 1
+echo -e "[ ${green}INFO$NC ] Settings banner"
+wget -q -O /etc/issue.net "https://raw.githubusercontent.com/Zeastore/asd/main/issue.net"
+chmod +x /etc/issue.net
+echo "Banner /etc/issue.net" >> /etc/ssh/sshd_config
+sed -i 's@DROPBEAR_BANNER=""@DROPBEAR_BANNER="/etc/issue.net"@g' /etc/default/dropbear
+cat> /etc/issue.net << END
+<font color="red"><b>============================</b></font><br> 
+<font color="white"><b>      PREMIUM SERVICE         </b></font><br> 
+<font color="red"><b>============================</b></font>
+END
+
 # Restart Stunnel5
 systemctl daemon-reload >/dev/null 2>&1
 systemctl enable stunnel5 >/dev/null 2>&1
