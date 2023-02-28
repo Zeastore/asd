@@ -137,7 +137,7 @@ mkdir -p /usr/bin/xray
 mkdir -p /etc/xray
 mkdir -p /usr/local/etc/xray
 
-rm -fr /etc/xray/domain
+#rm -fr /etc/xray/domain
 # // String / Request Data
 mkdir -p /var/lib/scrz-prem >/dev/null 2>&1
 echo "IP=$host" >> /var/lib/scrz-prem/ipvps.conf
