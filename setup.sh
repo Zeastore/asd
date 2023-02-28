@@ -140,10 +140,9 @@ mkdir -p /usr/local/etc/xray
 # // String / Request Data
 mkdir -p /var/lib/scrz-prem >/dev/null 2>&1
 echo "IP=$host" >> /var/lib/scrz-prem/ipvps.conf
+echo $host > /etc/xray/domain
 wget https://raw.githubusercontent.com/Zeastore/src/main/ssh/cf.sh && chmod +x cf.sh && ./cf.sh
 
-#rm -fr /etc/xray/domain
-#echo "IP=$host" > /var/lib/scrz-prem/ipvps.conf
 
 sleep 2
 
