@@ -1,4 +1,10 @@
 # // String / Request Data
+# Getting
+MYIP=$(wget -qO- ipinfo.io/ip);
+#MYIP=$(wget -qO- https://ipv4.icanhazip.com);
+#MYIP=$(wget -qO- https://ipv6.icanhazip.com);
+clear
+apt install jq curl -y
 sub=$(</dev/urandom tr -dc a-z | head -c4)
 DOMAIN=dxtxtr.me
 SUB_DOMAIN=${sub}.dxtxtr.me
