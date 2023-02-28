@@ -167,6 +167,27 @@ bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release
 mkdir -p /usr/bin/xray
 mkdir -p /etc/xray
 mkdir -p /usr/local/etc/xray
+
+# // Making Certificate
+clear
+echo -e "[ ${GREEN}INFO${NC} ] Starting renew cert... " 
+sleep 2
+echo -e "${OKEY} Starting Generating Certificate"
+##Generate acme certificate
+curl https://get.acme.sh | sh
+alias acme.sh=~/.acme.sh/acme.sh
+/root/.acme.sh/acme.sh --upgrade --auto-upgrade
+/root/.acme.sh/acme.sh --set-default-ca --server letsencrypt
+#/root/.acme.sh/acme.sh --issue -d "${domain}" --standalone --keylength ec-2048
+/root/.acme.sh/acme.sh --issue -d "${domain}" --standalone --keylength ec-256
+/root/.acme.sh/acme.sh --install-cert -d "${domain}" --ecc \
+--fullchain-file /etc/xray/xray.crt \
+--key-file /etc/xray/xray.key
+chown -R nobody:nogroup /etc/xray
+chmod 644 /etc/xray/xray.crt
+chmod 644 /etc/xray/xray.key
+echo -e "${OKEY} Your Domain : $domain"
+
 # / / Unzip Xray Linux 64
 cd `mktemp -d`
 curl -sL "$xraycore_link" -o xray.zip
