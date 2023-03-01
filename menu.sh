@@ -170,11 +170,11 @@ IPVPS=$(curl -s ipinfo.io/ip )
 ISPVPS=$( curl -s ipinfo.io/org )
 clear
 echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
-echo -e "\E[44;1;39m                     ⇱ SERVER INFORMATION ⇲                        \E[0m"
+echo -e "\E[44;1;39m                    ⇱ SERVER INFORMATION ⇲                      \E[0m"
 echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
 echo -e "${BICyan} "                                                                      
-echo -e "${BICyan} ⇲  ${BICyan}Use Core        :  ${BIPurple}FREE TUNNELING PTOJECT{NC}"    
-echo -e "${BICyan} ⇲  ${BICyan}Current Domain  :  ${BIPurple}$(cat /etc/xray/domain)${NC}" 
+echo -e "${BICyan} ⇲  ${BICyan}Use Core        :  ${BIYellow}FREE TUNNELING PTOJECT"    
+echo -e "${BICyan} ⇲  ${BICyan}Current Domain  :  ${BIYellow}$(cat /etc/xray/domain)${NC}" 
 echo -e "${BICyan} ⇲  ${BICyan}IP-VPS          :  ${BIYellow}$IPVPS${NC}"                  
 echo -e "${BICyan} ⇲  ${BICyan}ISP-VPS         :  ${BIYellow}$ISPVPS${NC}"                 
 echo -e "${BICyan} "
@@ -189,7 +189,7 @@ echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━�
 echo -e "\E[44;1;39m                     ⇱ MENU SERVICE ⇲                         \E[0m"
 echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
 echo -e ""
-echo -e " [${WHITE}01${NC}]${RED} •${NC} ${CYAN}SSH MENU        $NC  [${WHITE}12${NC}]${RED} • ${NC}${CYAN}GEN-SSL / CERTV $NC"
+echo -e " ${BICyan}[${BIWhite}01${BICyan}]${RED} •${NC} ${CYAN}SSH MENU        $NC  [${WHITE}12${NC}]${RED} • ${NC}${CYAN}GEN-SSL / CERTV $NC"
 echo -e " [${WHITE}02${NC}]${RED} •${NC} ${CYAN}VMESS MENU      $NC  [${WHITE}13${NC}]${RED} • ${NC}${CYAN}BANNER CHAGE $NC"
 echo -e " [${WHITE}03${NC}]${RED} •${NC} ${CYAN}VLESS MENU      $NC  [${WHITE}14${NC}]${RED} • ${NC}${CYAN}CEK RUNNING SERVICE $NC"
 echo -e " [${WHITE}04${NC}]${RED} •${NC} ${CYAN}TROJAN MENU     $NC  [${WHITE}15${NC}]${RED} • ${NC}${CYAN}CEK TRAFIC $NC"
@@ -200,10 +200,10 @@ echo -e " [${WHITE}08${NC}]${RED} •${NC} ${CYAN}REBOOT          $NC  [${WHITE}
 echo -e " [${WHITE}09${NC}]${RED} •${NC} ${CYAN}RESTART SERVICE $NC  [${WHITE}20${NC}]${RED} • ${NC}${CYAN}SCRIPT INFO $NC"
 echo -e " [${WHITE}10${NC}]${RED} •${NC} ${CYAN}BACKUP MENU     $NC  [${WHITE}21${NC}]${RED} • ${NC}${CYAN}CLEAR LOG $NC"
 echo -e " [${WHITE}11${NC}]${RED} •${NC} ${CYAN}ADD HOST        $NC  [${WHITE}22${NC}]${RED} • ${NC}${CYAN}FIX MISSING POINTING $NC"
-echo -e "${BICyan}[${BIWhite}x${BICyan}]  EXIT ${BICyan}${BIYellow}${BICyan}${NC}"  
+echo -e "${BICyan}[${BIWhite} X ${BICyan}] TYPE X FOR EXIT ${BICyan}${BIYellow}${BICyan}${NC}"  
 echo -e " ${RED}"
 echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
-echo -e "\E[44;1;39m                     ⇱ FREE TUNNEL PROJECT ⇲                      \E[0m"
+echo -e "\E[44;1;39m                    ⇱ FREE TUNNEL PROJECT ⇲                    \E[0m"
 echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
 echo
 read -p " Select menu : " opt
