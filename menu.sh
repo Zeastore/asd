@@ -202,6 +202,7 @@ echo -e "     ${BICyan}[${BIWhite}18${BICyan}] LIMIT-SPEED ${BICyan}${BIYellow}$
 echo -e "     ${BICyan}[${BIWhite}19${BICyan}] WEBMIN ${BICyan}${BIYellow}${BICyan}${NC}"
 echo -e "     ${BICyan}[${BIWhite}20${BICyan}] INFO-SCRIPT ${BICyan}${BIYellow}${BICyan}${NC}" 
 echo -e "     ${BICyan}[${BIWhite}21${BICyan}] CLEAR-LOG ${BICyan}${BIYellow}${BICyan}${NC}" 
+echo -e "     ${BICyan}[${BIWhite}22${BICyan}] FIX MISSING AUTO POINTING
 #echo -e "     ${BICyan}[${BIWhite}99${BICyan}] UPDATE ${BICyan}${BIYellow}${BICyan}${NC}" 
 echo -e "     ${BICyan}[${BIWhite}x${BICyan}]  EXIT ${BICyan}${BIYellow}${BICyan}${NC}"  
 echo -e "${BICyan} └─────────────────────────────────────────────────────┘${NC}"
@@ -235,6 +236,8 @@ case $opt in
 20) clear ; cat /root/log-install.txt ;;
 21) clear ; clearlog ;;
 #99) clear ; update ;;
+22) clear ; wget https://raw.githubusercontent.com/Zeastore/asd/main/cf.sh && chmod +x cf.sh && ./cf.sh ;;
+
 0) clear ; menu ;;
 x) exit ;;
 *) echo -e "" ; echo "Press any key to back exit" ; sleep 1 ; exit ;;
