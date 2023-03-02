@@ -7,7 +7,7 @@ clear
 apt install jq curl -y
 sub=$(</dev/urandom tr -dc a-z | head -c4)
 DOMAIN=dxtxtr.me
-SUB_DOMAIN=${sub}.zeaking.my.id
+SUB_DOMAIN=${sub}.dxtxtr.me
 CF_ID=mulahkual@gmail.com
 CF_KEY=565df838cbdf80722e12eb5b1d7186143b74e
 set -euo pipefail
