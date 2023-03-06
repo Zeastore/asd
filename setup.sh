@@ -137,12 +137,12 @@ mkdir -p /usr/bin/xray
 mkdir -p /etc/xray
 mkdir -p /usr/local/etc/xray
 
-#rm -fr /etc/xray/domain
+rm -fr /etc/xray/domain
 # // String / Request Data
 mkdir -p /var/lib/scrz-prem >/dev/null 2>&1
-echo "IP=$host" >> /var/lib/scrz-prem/ipvps.conf
-echo $host > /etc/xray/domain
-wget https://raw.githubusercontent.com/Zeastore/asd/main/cf.sh && chmod +x cf.sh && ./cf.sh
+#echo "IP=$host" >> /var/lib/scrz-prem/ipvps.conf
+#echo $host > /etc/xray/domain
+#wget https://raw.githubusercontent.com/Zeastore/asd/main/cf.sh && chmod +x cf.sh && ./cf.sh
 
 sleep 2
 
