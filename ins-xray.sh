@@ -677,6 +677,100 @@ LimitNOFILE=1000000
 WantedBy=multi-user.target
 EOF
 
+
+sudo apt install -y debian-keyring debian-archive-keyring apt-transport-https
+
+curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/gpg.key' | sudo gpg --dearmor -o /usr/share/keyrings/caddy-stable-archive-keyring.gpg --yes
+
+curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt' | sudo tee /etc/apt/sources.list.d/caddy-stable.list
+
+sudo apt update
+
+sudo apt install caddy
+
+systemctl enable caddy
+
+cat >/etc/caddy/Caddyfile <<-EOF
+
+$domain:443
+
+{
+
+    tls bhoikfostyahya@gmail.com
+
+    encode gzip
+
+    handle_path /vless {
+
+        reverse_proxy localhost:10001
+
+    }
+
+    import vmess
+
+    handle_path /vmess {
+
+        reverse_proxy localhost:10002
+
+    }
+
+    handle_path /trojan-ws {
+
+        reverse_proxy localhost:10003
+
+    }
+
+    handle_path /ss-ws {
+
+        reverse_proxy localhost:10004
+
+    }
+
+    handle {
+
+        reverse_proxy https://$domain {
+
+            trusted_proxies 0.0.0.0/0
+
+            header_up Host {upstream_hostport}
+
+        }
+
+    }
+
+}
+
+EOF
+
+cat >/etc/caddy/vmess <<-EOF
+
+@ws_path {
+
+path /worryfree
+
+path /xray
+
+path /yha
+
+path /vmess
+
+path /vless
+
+path /*
+
+}
+
+handle @ws_path {
+
+    uri path_regexp /.* /
+
+    reverse_proxy localhost:10002
+
+}
+
+EOF
+
+
 echo -e "[ ${GREEN}ok${NC} ] Enable & Start & Restart & Xray"
 systemctl daemon-reload >/dev/null 2>&1
 systemctl enable xray >/dev/null 2>&1
