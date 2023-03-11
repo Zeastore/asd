@@ -204,6 +204,11 @@ wget -q -O /usr/bin/menu "https://raw.githubusercontent.com/Zeastore/asd/main/me
 wget -q -O /usr/bin/wbm "https://raw.githubusercontent.com/Zeastore/asd/main/webmin.sh"
 wget -q -O /usr/bin/xp "https://raw.githubusercontent.com/Zeastore/asd/main/xp.sh"
 #wget -q -O /usr/bin/update "https://raw.githubusercontent.com/Zeastore/asd/main/update.sh"
+wget -q -O /usr/bin/xp-hour "https://raw.githubusercontent.com/Zeastore/asd/main/xp-hour.sh"
+
+wget -q -O /usr/bin/trial "https://raw.githubusercontent.com/Zeastore/asd/main/trial.sh"
+chmod +x /usr/bin/trial
+chmod +x /usr/bin/xp-hour
 chmod +x /usr/bin/add-ws
 chmod +x /usr/bin/add-ssws
 #chmod +x /usr/bin/add-socks
