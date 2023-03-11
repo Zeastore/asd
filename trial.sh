@@ -42,47 +42,20 @@ fi
 
 tls="$(cat ~/log-install.txt | grep -w "Vmess TLS" | cut -d: -f2|sed 's/ //g')"
 none="$(cat ~/log-install.txt | grep -w "Vmess None TLS" | cut -d: -f2|sed 's/ //g')"
-until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
-echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "\\E[0;41;36m      Add Xray/Vmess Account      \E[0m"
-echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-
-    user=30menit`</dev/urandom tr -dc X-Z0-9 | head -c4`
-		CLIENT_EXISTS=$(grep -w $user /etc/xray/config.json | wc -l)
-
-		if [[ ${CLIENT_EXISTS} == '1' ]]; then
-clear
-            echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-            echo -e "\\E[0;41;36m      Add Xray/Vmess Account      \E[0m"
-            echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-			echo ""
-			echo "A client with the specified name was already created, please choose another name."
-			echo ""
-			echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-			read -n 1 -s -r -p "Press any key to back on menu"
-menu
-		fi
-	done
-
 uuid=$(cat /proc/sys/kernel/random/uuid)
-hour=$(date -d "30 minute" +"%Y-%m-%d %H:%M:%S")
-useradd -e `date -d "$hari day" +"%Y-%m-%d"` -s /bin/false -M $Login
-exp="$(chage -l $Login | grep "Account expires" | awk -F": " '{print $2}')"
-echo -e "### $Login $hour" >> /root/hour.conf
-now=$(date +"%Y-%m-%d %H:%M:%S")
-exp2=$(grep -w "^### $Login" "/root/hour.conf" | cut -d ' ' -f 3-5)
-d1=$(date -d "$exp2" +%s)
-d2=$(date -d "$now" +%s)
-exp3=$(( (d1 - d2) / 60 ))
-sed -i '/#vmess$/a\### '"$user $exp3"'\
+user=Trial-`</dev/urandom tr -dc X-Z0-9 | head -c2`
+tnggl=$(date +"%R")
+read -p "Expired (Jam): " ktf
+exp=`date -d "$ktf hour" +"%R"`
+sed -i '/#vmess$/a\### '"$user $exp"'\
 },{"id": "'""$uuid""'","alterId": '"0"',"email": "'""$user""'"' /etc/xray/config.json
-sed -i '/#vmessworry$/a\### '"$user $exp3"'\
+sed -i '/#vmessworry$/a\### '"$user $exp"'\
 },{"id": "'""$uuid""'","alterId": '"0"',"email": "'""$user""'"' /etc/xray/config.json
-sed -i '/#vmesskuota$/a\### '"$user $exp3"'\
+sed -i '/#vmesskuota$/a\### '"$user $exp"'\
 },{"id": "'""$uuid""'","alterId": '"0"',"email": "'""$user""'"' /etc/xray/config.json
-sed -i '/#vmessgrpc$/a\### '"$user $exp3"'\
+sed -i '/#vmessgrpc$/a\### '"$user $exp"'\
 },{"id": "'""$uuid""'","alterId": '"0"',"email": "'""$user""'"' /etc/xray/config.json
-sed -i '/#$/a\### '"$user $exp3"'\
+sed -i '/#$/a\### '"$user $exp"'\
 },{"id": "'""$uuid""'","alterId": '"0"',"email": "'""$user""'"' /etc/xray/config.json
 asu=`cat<<EOF
       {
@@ -237,7 +210,7 @@ echo -e "Link none TLS : ${vmesslink2}" | tee -a /etc/log-create-user.log
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
 echo -e "Link GRPC : ${vmesslink5}" | tee -a /etc/log-create-user.log
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
-echo -e "Expired On : $exp3" | tee -a /etc/log-create-user.log
+echo -e "Expired On : $ktf JAM" | tee -a /etc/log-create-user.log
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
 echo "" | tee -a /etc/log-create-user.log
 rm /etc/xray/$user-tls.json > /dev/null 2>&1
