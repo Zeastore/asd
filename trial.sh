@@ -1,34 +1,3 @@
-
-Zeastore
-/
-asd
-Public
-Code
-Issues
-Pull requests
-Actions
-Projects
-Wiki
-Security
-Insights
-Settings
-Breadcrumbsasd
-/add-ws.sh
-Latest commit
-
-Zeastore
-4 days ago
-History
-271 lines (257 loc) · 10 KB
-Breadcrumbsasd
-/add-ws.sh
-File metadata and controls
-
-Code
-
-Blame
-export NC='\033[0m'
-
 # // Export Banner Status Information
 export EROR="[${RED} EROR ${NC}]"
 export INFO="[${YELLOW} INFO ${NC}]"
