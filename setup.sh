@@ -137,9 +137,9 @@ mkdir -p /usr/bin/xray
 mkdir -p /etc/xray
 mkdir -p /usr/local/etc/xray
 
-rm -fr /etc/xray/domain
+#rm -fr /etc/xray/domain
 # // String / Request Data
-mkdir -p /var/lib/scrz-prem >/dev/null 2>&1
+#mkdir -p /var/lib/scrz-prem >/dev/null 2>&1
 #echo "IP=$host" >> /var/lib/scrz-prem/ipvps.conf
 #echo $host > /etc/xray/domain
 #wget https://raw.githubusercontent.com/Zeastore/asd/main/cf.sh && chmod +x cf.sh && ./cf.sh
@@ -299,21 +299,21 @@ gg="PM"
 else
 gg="AM"
 fi
-echo -e "[ ${green}Pleas Wait Update DB ${NC} ]"
-git clone https://github.com/Zeastore/limit.git /root/limit/ &> /dev/null
-babu=$(cat /etc/.geovpn/license.key)
-echo -e "$babu $IP $Masa_Laku_License_Berlaku_Sampai" >> /root/limit/limit.txt
-cd /root/limit
-    git config --global user.email "pribadi.no99@gmail.com" &> /dev/null
-    git config --global user.name "Zeastore" &> /dev/null
-    rm -fr .git &> /dev/null
-    git init &> /dev/null
-    git add . &> /dev/null
-    git commit -m m &> /dev/null
-    git branch -M main &> /dev/null
-    git remote add origin https://github.com/Zeastore/limit
-    git push -f https://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@github.com/kenDevXD/limit.git &> /dev/null
-cd
+#echo -e "[ ${green}Pleas Wait Update DB ${NC} ]"
+#git clone https://github.com/Zeastore/limit.git /root/limit/ &> /dev/null
+#babu=$(cat /etc/.geovpn/license.key)
+#echo -e "$babu $IP $Masa_Laku_License_Berlaku_Sampai" >> /root/limit/limit.txt
+#cd /root/limit
+#    git config --global user.email "pribadi.no99@gmail.com" &> /dev/null
+#    git config --global user.name "Zeastore" &> /dev/null
+#    rm -fr .git &> /dev/null
+#    git init &> /dev/null
+#    git add . &> /dev/null
+#    git commit -m m &> /dev/null
+#    git branch -M main &> /dev/null
+#    git remote add origin https://github.com/Zeastore/limit
+#    git push -f https://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@github.com/kenDevXD/limit.git &> /dev/null
+#cd
 echo "1.1" >> /home/.ver
 rm -fr /root/limit
 curl -sS ifconfig.me > /etc/myipvps
@@ -371,7 +371,7 @@ rm -fr /root/jembot.sh
 rm -fr /root/ssh-vpn.sh
 rm -fr /root/ins-xray.sh
 rm -fr /root/setup.sh
-rm -fr /root/domain
+rm -fr /root/cf.sh
 history -c
 
 echo -ne "[ ${yell}WARNING${NC} ] Do You Need Reboot Now ? (y/n)? "
