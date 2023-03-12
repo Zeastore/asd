@@ -151,7 +151,14 @@ echo -e "$white\033[0;34m┌─────────────────�
 echo -e "                          ⇱ INSTALL DOMAIN ⇲            "
 echo -e "$white\033[0;34m└─────────────────────────────────────────┘${NC}"
 sleep 1
+#install cf
 wget https://raw.githubusercontent.com/Zeastore/asd/main/cf.sh && chmod +x cf.sh && ./cf.sh
+rm -f /root/cf.sh
+clear
+else
+echo -e "Random Subdomain/Domain is used"
+wget https://raw.githubusercontent.com/Zeastore/asd/main/cf.sh && chmod +x cf.sh && ./cf.sh
+rm -f /root/cf.sh
 #install jembot
 echo -e "$white\033[0;34m┌─────────────────────────────────────────┐${NC}"
 echo -e " \E[41;1;39m           ⇱ Install Jembot ⇲            \E[0m$NC"
@@ -362,7 +369,7 @@ echo ""
 echo ""
 echo "------------------------------------------------------------"
 echo ""
-echo "===============-[ Script Mod By ZEAKING TUNNELING ]-==============="
+echo "===============-[ SCRIPT MOD By ZEAKING TUNNELING ]-==============="
 echo -e ""
 echo ""
 echo "" | tee -a log-install.txt
@@ -374,8 +381,8 @@ rm -fr /root/setup.sh
 rm -fr /root/cf.sh
 history -c
 
-echo -ne "[ ${yell}WARNING${NC} ] Do You Need Reboot Now ? (y/n)? "
-read answer
+echo -ne "[ ${yell}WARNING${NC} ] Do You Need Reboot Now ? (y/n)? "read answer
+#read answer
 if [ "$answer" == "${answer#[Yy]}" ] ;then
 exit 0
 else
