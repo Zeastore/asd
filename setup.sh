@@ -154,11 +154,6 @@ sleep 1
 #install cf
 wget https://raw.githubusercontent.com/Zeastore/asd/main/cf.sh && chmod +x cf.sh && ./cf.sh
 rm -f /root/cf.sh
-clear
-else
-echo -e "Random Subdomain/Domain is used"
-wget https://raw.githubusercontent.com/Zeastore/asd/main/cf.sh && chmod +x cf.sh && ./cf.sh
-rm -f /root/cf.sh
 #install jembot
 echo -e "$white\033[0;34m┌─────────────────────────────────────────┐${NC}"
 echo -e " \E[41;1;39m           ⇱ Install Jembot ⇲            \E[0m$NC"
