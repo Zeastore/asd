@@ -116,3 +116,5 @@ clear
 echo " You Entered The Wrong Number"
 menu
 fi
+read -n 1 -s -r -p "Press any key to back on menu"
+menu
