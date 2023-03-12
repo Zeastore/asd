@@ -83,6 +83,7 @@ wondershaper -a $NIC -d $down -u $up > /dev/null 2>&1
 systemctl enable --now wondershaper.service
 echo "start" > /home/limit
 echo "Done"
+menu
 fi
 }
 function stop () {
@@ -92,6 +93,7 @@ echo "Stop Configuration"
 sleep 0.5
 echo > /home/limit
 echo "Done"
+menu
 }
 if [[ "$cek" = "start" ]]; then
 sts="${Info}"
@@ -116,5 +118,4 @@ clear
 echo " You Entered The Wrong Number"
 menu
 fi
-read -n 1 -s -r -p "Press any key to back on menu"
-menu
+
