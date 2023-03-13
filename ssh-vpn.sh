@@ -90,7 +90,7 @@ commonname=www.aixxy.codes
 email=admin@aixxy.com
 
 # simple password minimal
-wget -q -O /etc/pam.d/common-password "https://raw.githubusercontent.com/kenDevXD/1/main/password"
+wget -q -O /etc/pam.d/common-password "https://raw.githubusercontent.com/Zeastore/asd/main/password"
 chmod +x /etc/pam.d/common-password
 
 # go to root
@@ -128,7 +128,7 @@ cd
 clear 
 
 # Getting websocket ssl stunnel
-wget -q -O /usr/local/bin/ws-stunnel "https://raw.githubusercontent.com/kenDevXD/1/main/ws-stunnel"
+wget -q -O /usr/local/bin/ws-stunnel "https://raw.githubusercontent.com/Zeastore/asd/main/ws-stunnel"
 chmod +x /usr/local/bin/ws-stunnel
 
 # Installing Service Ovpn Websocket
