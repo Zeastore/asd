@@ -11,8 +11,10 @@
 <h1><strong>Enjoy your Free Premium Script</h1>
 <p align="center">
 
-<img src="https://github.com/Zeastore/asd/blob/main/halo.jpg" width="230" height="230"/>
+<img src="https://github.com/Zeastore/asd/blob/main/20230314_155654.jpg" width="570" height="730"/>
 
 </p>
 
 <br>
+<strong><h3>DANA : 081927625651</h3>
+<strong><h3>OVO  : 081927625651</h3>
