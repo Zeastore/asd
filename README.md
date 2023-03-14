@@ -11,7 +11,7 @@
 <h1><strong>Enjoy your Free Premium Script</h1>
 <p align="center">
 
-<img src="https://github.com/Zeastore/asd/blob/main/20230314_155654.jpg" width="570" height="730"/>
+<img src="https://github.com/Zeastore/asd/blob/main/20230314_155654.jpg" width="470" height="630"/>
 
 </p>
 
