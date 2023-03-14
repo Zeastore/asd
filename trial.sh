@@ -1,3 +1,4 @@
+#!/bin/bash
 # // Export Banner Status Information
 export EROR="[${RED} EROR ${NC}]"
 export INFO="[${YELLOW} INFO ${NC}]"
