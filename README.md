@@ -9,3 +9,10 @@
 <h2><strong>4. in menu no 9 sellec restart stunnel5</h2>
 
 <h1><strong>Enjoy your Free Premium Script</h1>
+<p align="center">
+
+<img src="https://github.com/Zeastore/asd/blob/main/halo.jpg" width="230" height="230"/>
+
+</p>
+
+<br>
