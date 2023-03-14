@@ -1,3 +1,4 @@
+#!/bin/bash
 # // String / Request Data
 # Getting
 MYIP=$(wget -qO- ipinfo.io/ip);
