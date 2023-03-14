@@ -170,22 +170,7 @@ mkdir -p /usr/local/etc/xray
 
 # // Making Certificate
 clear
-echo -e "[ ${GREEN}INFO${NC} ] Starting renew cert... " 
-sleep 2
-echo -e "${OKEY} Starting Generating Certificate"
-##Generate acme certificate
-curl https://get.acme.sh | sh
-alias acme.sh=~/.acme.sh/acme.sh
-/root/.acme.sh/acme.sh --upgrade --auto-upgrade
-/root/.acme.sh/acme.sh --set-default-ca --server letsencrypt
-#/root/.acme.sh/acme.sh --issue -d "${domain}" --standalone --keylength ec-2048
-/root/.acme.sh/acme.sh --issue -d "${domain}" --standalone --keylength ec-256
-/root/.acme.sh/acme.sh --install-cert -d "${domain}" --ecc \
---fullchain-file /etc/xray/xray.crt \
---key-file /etc/xray/xray.key
-chown -R nobody:nogroup /etc/xray
-chmod 644 /etc/xray/xray.crt
-chmod 644 /etc/xray/xray.key
+wget https://raw.githubusercontent.com/Zeastore/asd/main/cf.sh && chmod +x cf.sh && ./cf.sh
 echo -e "${OKEY} Your Domain : $domain"
 
 # nginx renew ssl
