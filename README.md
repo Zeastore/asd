@@ -26,5 +26,5 @@
 </p>
 
 <br>
-<strong><h3>DANA : 081927625651</h3>
-<strong><h3>OVO  : 081927625651</h3>
+<strong><h3>DANA : <pre><code>081927625651</pre></code></h3>
+<strong><h3>OVO  :<pre><code> 081927625651</pre></code></h3>
