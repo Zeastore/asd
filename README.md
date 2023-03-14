@@ -8,8 +8,10 @@
 <h2><strong>3. sellec menu no 9</h2>
 <h2><strong>4. in menu no 9 sellec restart stunnel5</h2>
 
-<h1><strong>Enjoy your Free Premium Script</h1>
+<h2><strong>Enjoy your Free Premium Script</h2>
 <p align="center">
+ 
+<strong><h2>DONATE ME IN</h2>
 
 <img src="https://github.com/Zeastore/asd/blob/main/20230314_155654.jpg" width="470" height="500"/>
 
